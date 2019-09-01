@@ -35,6 +35,7 @@ export class BasicLoginFormComponent implements OnInit {
             .then( (info) => {
               console.log("email send");
               console.dir(info);
+              this.angularFireAuth.auth.signOut();
             })
             .catch((error) => {
               console.dir(error);
@@ -51,7 +52,7 @@ export class BasicLoginFormComponent implements OnInit {
           }
           console.log(error);
         });
-        this.angularFireAuth.auth.signOut();
+        
     }
   }
 

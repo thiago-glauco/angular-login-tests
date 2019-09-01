@@ -44,7 +44,7 @@ import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.com
     MatDividerModule,
     MatButtonToggleModule,
     MatCardModule,
-    
+    MatMenuModule
     ],
   declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent ],
   bootstrap:    [ AppComponent ]

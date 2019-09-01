@@ -1,0 +1,56 @@
+  <form class="form-space" fxLayout="column" #userDataForm="ngForm" (ngSubmit)="onSubmit()">
+    <!--This area deals with user loggin and data fields. -->
+    <p>Please, check your personal data, address, contact info and login password:</p>
+    <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Name" name="userName" [(ngModel)]="user.name" 
+        required minLength="4" maxlength="80" pattern="^[\wÀ-ú]+(\s[\wÀ-ú]+){1,10}" #userName="ngModel">
+        <mat-error *ngIf="userName.touched && userName.invalid">
+          Full Name is required.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput type="tel" placeholder="Telephone"
+      name="tel" [(ngModel)]="user.tel" #tel="ngModel"
+      required minlength="8" maxlength="15">
+      <mat-error *ngIf="tel.touched && tel.invalid">   
+          A valid phone is required.
+      </mat-error>
+    </mat-form-field>
+      {{tel.valid}} {{tel.dirty}} {{tel.errors | json}}
+    <mat-form-field fxFlex>
+      <input matInput type="email" placeholder="E-Mail" name="email" [(ngModel)]="user.email" required #email="ngModel">
+      <mat-error *ngIf="email.touched && email.invalid">
+          A valid email is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <!--This area deal with password -->
+    <div class="password" fxFlex fxLayout="column">
+    <div class="toggle-button" fxLayout="row" fxLayoutAlign="center center">
+      <p fxFlex>Do you want to change your password?</p>
+      <mat-button-toggle-group  #group="matButtonToggleGroup" value="no">
+        <mat-button-toggle value="no" aria-label="turn on passord changes" fxFlex fxAlign="center">
+          No
+        </mat-button-toggle>
+        <mat-button-toggle value="yes" aria-label="Turn off password changes" fxFlex fxAlign="center">
+          Yes
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field fxFlex>
+      <input matInput [disabled]="group.value !== 'yes'"
+      [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password"
+      [(ngModel)]="user.password" #password="ngModel"  minlength="6" maxlength="8" >
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput [disabled]="group.value !== 'yes'"
+      [type]="hidePassword ? 'password' : 'text'" placeholder="Confirm Password" name="confirmPassword"
+      [(ngModel)]="user.confirmPassword" minlength="6" maxlength="8" #confirmPassword="ngModel">
+    </mat-form-field>
+    <button fxFlex flxAlign="center" mat-icon-button [disabled]="group.value !== 'yes'" (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    </div>
+    <mat-divider></mat-divider>
+  </form>

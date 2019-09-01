@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { User } from '../shared/user';
+import { Address } from '../shared/address';
+import { UserPersonalData } from '../shared/user-personal-data';
 
 @Component({
   selector: 'app-basic-login-form',
@@ -9,7 +12,10 @@ import { auth } from 'firebase/app';
 })
 export class BasicLoginFormComponent implements OnInit {
   fbUser: firebase.User;
-  
+    //Form variables:
+  hidePassword: boolean = true;
+  user: User = new User();
+
   constructor(public angularFireAuth: AngularFireAuth) { }
 
   ngOnInit() {

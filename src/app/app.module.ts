@@ -4,6 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+//material design
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -15,12 +25,27 @@ import { HelloComponent } from './hello.component';
 
 import {firebaseConfig} from './configs/firebase-config';
 import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.component';
+
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,
-  AngularFireModule.initializeApp(firebaseConfig, 'login-testes'),
+  imports:      [
+    BrowserModule,
+    FormsModule,
+    AngularFireModule.initializeApp(firebaseConfig, 'login-testes'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule, ],
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDividerModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    
+    ],
   declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent ],
   bootstrap:    [ AppComponent ]
 })

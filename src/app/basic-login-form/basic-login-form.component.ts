@@ -56,4 +56,8 @@ export class BasicLoginFormComponent implements OnInit {
     }
   }
 
+  logOut( ) {
+    this.angularFireAuth.auth.signOut();
+  }
+
 }

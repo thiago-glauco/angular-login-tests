@@ -45,4 +45,7 @@
     <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid"  (click)="createUser()" [attr.aria-label]="'Registrar'">
       <mat-icon></mat-icon> Registrar
     </button>
+       <button fxFlex flxAlign="center" mat-raised-button (click)="logOut()" [attr.aria-label]="'Sair'">
+      <mat-icon></mat-icon> Sair
+    </button>
   </form>

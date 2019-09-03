@@ -5,18 +5,17 @@
           A valid email is required.
       </mat-error>
     </mat-form-field>
-    <mat-divider></mat-divider>
-
-    <!--This area deal with password -->
+       <!--This area deal with password -->
     <div class="password" fxFlex fxLayout="column">
       <mat-form-field fxFlex>
         <input matInput 
         [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password"
-        [(ngModel)]="user.password" #password="ngModel" require  minlength="6" maxlength="8" >
+        [(ngModel)]="user.password" #password="ngModel" required  minlength="6" maxlength="8" >
+        <button fxFlex flxAlign="center" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
-      <button fxFlex flxAlign="center" mat-icon-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
+  
     </div>
     <mat-divider></mat-divider>
     <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid" [fxHide]="fbUser" (click)="loginUser()" [attr.aria-label]="'Registrar'">

@@ -2,6 +2,22 @@
     <!--This area deals with user loggin and data fields. -->
     <p>Please, check your personal data, address, contact info and login password:</p>
     <mat-form-field fxFlex>
+      <input matInput type="text" placeholder="Name" name="userName" [(ngModel)]="user.name" 
+        required minLength="4" maxlength="80" pattern="^[\wÀ-ú]+(\s[\wÀ-ú]+){1,10}" #userName="ngModel">
+        <mat-error *ngIf="userName.touched && userName.invalid">
+          Full Name is required.
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput type="tel" placeholder="Telephone"
+      name="tel" [(ngModel)]="user.tel" #tel="ngModel"
+      required minlength="8" maxlength="15">
+      <mat-error *ngIf="tel.touched && tel.invalid">   
+          A valid phone is required.
+      </mat-error>
+    </mat-form-field>
+      {{tel.valid}} {{tel.dirty}} {{tel.errors | json}}
+    <mat-form-field fxFlex>
       <input matInput type="email" placeholder="E-Mail" name="email" [(ngModel)]="user.email" required #email="ngModel">
       <mat-error *ngIf="email.touched && email.invalid">
           A valid email is required.

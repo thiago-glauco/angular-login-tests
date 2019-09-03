@@ -33,6 +33,7 @@ export class LoginFormComponent implements OnInit {
       if(this.angularFireAuth.auth.currentUser.emailVerified){
         this.fbUser = this.angularFireAuth.auth.currentUser;
       } else {
+        //usuário não verificado
         alert("Usuário não ativado. Enviamos um link para ativação da sua conta. Por favor acesse seu e-mail e faça a verificação");
       }
     } )
@@ -41,6 +42,7 @@ export class LoginFormComponent implements OnInit {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log("Login error: " + error.code + " " + error.message);
+      alert(`Ocorreu um erro em seu login: ${error.code} \n ${error.message}`);
       // ...
     });
   }

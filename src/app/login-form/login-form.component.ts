@@ -48,8 +48,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   logOut( ) {
-    this.angularFireAuth.auth.signOut();
-    this.fbUser = this.angularFireAuth.auth.currentUser;
+    this.angularFireAuth.auth.signOut()
+    .then( ( ) => {
+      this.fbUser = this.angularFireAuth.auth.currentUser;
+    });
   }
 
 }

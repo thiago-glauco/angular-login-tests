@@ -13,6 +13,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTabsModule} from '@angular/material/tabs'; 
 
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -46,7 +47,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatDividerModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
     ],
   declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent ],
   bootstrap:    [ AppComponent ]

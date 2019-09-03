@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
       if(this.angularFireAuth.auth.currentUser.emailVerified){
         this.fbUser = this.angularFireAuth.auth.currentUser;
       } else {
-        alert("Usuário não verificado.");
+        alert("Usuário não ativado. Enviamos um link para ativação da sua conta. Por favor acesse seu e-mail e faça a verificação");
       }
     } )
     .catch(function(error) {

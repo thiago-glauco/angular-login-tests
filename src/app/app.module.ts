@@ -14,6 +14,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -27,6 +28,7 @@ import { HelloComponent } from './hello.component';
 import {firebaseConfig} from './configs/firebase-config';
 import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { DialogRecoverPassword } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
 
@@ -48,9 +50,14 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatButtonToggleModule,
     MatCardModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
     ],
-  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent ],
+  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword ],
+  
+  entryComponents: [
+    DialogRecoverPassword
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

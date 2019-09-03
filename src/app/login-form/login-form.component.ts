@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { User } from '../configs/user';
@@ -18,7 +19,10 @@ export class LoginFormComponent implements OnInit {
   hidePassword: boolean = true;
   user: User = new User();
 
-  constructor(public angularFireAuth: AngularFireAuth) { }
+  constructor(
+    public angularFireAuth: AngularFireAuth,
+    //dialog para recuperar senha
+    public recoverPasswordDialog: MatDialog) { }
 
   ngOnInit() {
     this.fbUser = this.angularFireAuth.auth.currentUser //Obtem o valor do objeto current user;
@@ -69,6 +73,38 @@ export class LoginFormComponent implements OnInit {
     } else {
       this.fbUser = null;
     }
+  }
+
+  recuperarSenha( ) {
+    const dialogRef = this.recoverPasswordDialog.open(DialogRecoverPassword, {
+      width: '250px',
+      data: {name: this.user.email}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.user.email = result;
+    });
+  }
+
+}
+
+export interface DialogData {
+  email: string;
+}
+
+@Component({
+  selector: 'dialog-recover-password',
+  templateUrl: './dialog-recover-password.html',
+})
+export class DialogRecoverPassword {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogRecoverPassword>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

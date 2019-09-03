@@ -22,6 +22,9 @@
     <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid" [fxHide]="fbUser" (click)="loginUser()" [attr.aria-label]="'Registrar'">
       <mat-icon></mat-icon> Login
     </button>
+    <button fxFlex flxAlign="center" mat-raised-button (click)="recuperarSenha()" [attr.aria-label]="'Recuperar Senha'">
+      <mat-icon>lock</mat-icon> Recuperar Senha
+    </button>
        <button fxFlex flxAlign="center" [disabled]="!fbUser" mat-raised-button (click)="logOut()" [attr.aria-label]="'Sair'">
       <mat-icon></mat-icon> Sair
     </button>

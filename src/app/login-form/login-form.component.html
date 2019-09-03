@@ -19,7 +19,7 @@
       </button>
     </div>
     <mat-divider></mat-divider>
-    <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid && fbUser"  (click)="loginUser()" [attr.aria-label]="'Registrar'">
+    <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid" [fxHide]="fbUser" (click)="loginUser()" [attr.aria-label]="'Registrar'">
       <mat-icon></mat-icon> Login
     </button>
        <button fxFlex flxAlign="center" [disabled]="!fbUser" mat-raised-button (click)="logOut()" [attr.aria-label]="'Sair'">

@@ -12,7 +12,7 @@
       <mat-form-field fxFlex>
         <input matInput 
         [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password"
-        [(ngModel)]="user.password" #password="ngModel"  minlength="6" maxlength="8" >
+        [(ngModel)]="user.password" #password="ngModel" require  minlength="6" maxlength="8" >
       </mat-form-field>
       <button fxFlex flxAlign="center" mat-icon-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -22,7 +22,7 @@
     <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid" [fxHide]="fbUser" (click)="loginUser()" [attr.aria-label]="'Registrar'">
       <mat-icon></mat-icon> Login
     </button>
-    <button fxFlex flxAlign="center" mat-raised-button (click)="recuperarSenha()" [attr.aria-label]="'Recuperar Senha'">
+    <button fxFlex flxAlign="center" mat-raised-button [fxHide]="fbUser" (click)="recuperarSenha()" [attr.aria-label]="'Recuperar Senha'">
       <mat-icon>lock</mat-icon> Recuperar Senha
     </button>
        <button fxFlex flxAlign="center" [disabled]="!fbUser" mat-raised-button (click)="logOut()" [attr.aria-label]="'Sair'">

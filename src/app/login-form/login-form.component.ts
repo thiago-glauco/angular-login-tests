@@ -84,7 +84,18 @@ export class LoginFormComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.user.email = result;
+      console.log(this.user.email);
+      this.angularFireAuth.auth.sendPasswordResetEmail(this.user.email)
+      .then( () => {
+        alert(`um link de recuperação de senha foi enviado para ${this.user.email}`)
+      }).catch( (error)=> {
+        console.log("erro ao tentar recuperar senha:");
+        console.dir(error);
+        alert(`Ocorreu um erro: ${error.code}`)
+      });
+
     });
+    
   }
 
 }

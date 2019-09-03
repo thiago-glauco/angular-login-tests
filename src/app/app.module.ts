@@ -54,7 +54,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatDialogModule
     ],
   declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword ],
-  
+  providers: [
+   
+  ],
   entryComponents: [
     DialogRecoverPassword
   ],

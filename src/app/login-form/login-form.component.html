@@ -1,0 +1,28 @@
+  <form class="form-space" fxLayout="column" #registerForm="ngForm" >
+    <mat-form-field fxFlex>
+      <input matInput type="email" placeholder="E-Mail" name="email" [(ngModel)]="user.email" required #email="ngModel">
+      <mat-error *ngIf="email.touched && email.invalid">
+          A valid email is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+
+    <!--This area deal with password -->
+    <div class="password" fxFlex fxLayout="column">
+      <mat-form-field fxFlex>
+        <input matInput 
+        [type]="hidePassword ? 'password' : 'text'" placeholder="Password" name="password"
+        [(ngModel)]="user.password" #password="ngModel"  minlength="6" maxlength="8" >
+      </mat-form-field>
+      <button fxFlex flxAlign="center" mat-icon-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid && !fbUser"  (click)="loginUser()" [attr.aria-label]="'Registrar'">
+      <mat-icon></mat-icon> Login
+    </button>
+       <button fxFlex flxAlign="center" [disabled]="!fbUser" mat-raised-button (click)="logOut()" [attr.aria-label]="'Sair'">
+      <mat-icon></mat-icon> Sair
+    </button>
+  </form>

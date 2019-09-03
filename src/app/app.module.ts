@@ -25,6 +25,8 @@ import { HelloComponent } from './hello.component';
 
 import {firebaseConfig} from './configs/firebase-config';
 import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 @NgModule({
@@ -46,7 +48,7 @@ import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.com
     MatCardModule,
     MatMenuModule
     ],
-  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent ],
+  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

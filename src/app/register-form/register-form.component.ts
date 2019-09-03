@@ -46,7 +46,7 @@ export class RegisterFormComponent implements OnInit {
           let errorCode = error.code;
           let errorMessage = error.message;
           if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
+            alert('Senha fraca. Tente outra senha.');
           } else {
             alert(errorMessage);
           }

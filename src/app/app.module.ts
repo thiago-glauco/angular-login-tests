@@ -30,6 +30,9 @@ import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.com
 import { LoginFormComponent } from './login-form/login-form.component';
 import { DialogRecoverPassword } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { HomeComponent } from './views/home/home.component';
+import { LoginComponent } from './views/login/login.component';
+import { AppRoutingModule } from '../app-routing/app-routing.module';
 
 
 @NgModule({
@@ -51,9 +54,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MatCardModule,
     MatMenuModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    AppRoutingModule
     ],
-  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword ],
+  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, HomeComponent, LoginComponent ],
   providers: [
    
   ],

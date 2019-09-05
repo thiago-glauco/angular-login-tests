@@ -32,7 +32,7 @@ import { DialogRecoverPassword } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
-import { AppRoutingModule } from '../app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
 @NgModule({

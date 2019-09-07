@@ -22,7 +22,7 @@ export class BasicLoginFormComponent implements OnInit {
   constructor(
     public angularFireAuth: AngularFireAuth,
     private afs: AngularFirestore ) { 
-      const usersCollection = afs.collection<RegisteredUser>('users');
+      //const usersCollection = afs.collection<RegisteredUser>('users');
     }
 
   ngOnInit() {

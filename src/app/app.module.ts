@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
@@ -60,7 +61,8 @@ import { LoginComponent } from './views/login/login.component';
     MatMenuModule,
     MatTabsModule,
     MatDialogModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireStoreModule
   ],
   declarations: [AppComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent],
   providers: [

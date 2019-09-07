@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { auth } from 'firebase/app';
 import { User } from '../../configs/user';
-import { Address } from '../../configs/address';
-import { UserPersonalData } from '../../configs/user-personal-data';
+import { RegisteredUser } from '../../configs/registered-user';
 
 @Component({
   selector: 'app-basic-login-form',
@@ -18,7 +19,11 @@ export class BasicLoginFormComponent implements OnInit {
   hidePassword: boolean = true;
   user: User = new User();
 
-  constructor(public angularFireAuth: AngularFireAuth) { }
+  constructor(
+    public angularFireAuth: AngularFireAuth,
+    private afs: AngularFirestore ) { 
+      const usersCollection = afs.collection<RegisteredUser>('users');
+    }
 
   ngOnInit() {
     this.fbUser = this.angularFireAuth.auth.currentUser //Obtem o valor do objeto current user;
@@ -31,6 +36,7 @@ export class BasicLoginFormComponent implements OnInit {
         .then( ( userCredential ) => {
           console.dir(userCredential);
           this.fbUser = userCredential.user;
+          
           this.fbUser.sendEmailVerification()
             .then( (info) => {
               console.log("email send");

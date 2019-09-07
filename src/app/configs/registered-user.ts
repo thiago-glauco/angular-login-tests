@@ -2,5 +2,6 @@
 export interface RegisteredUser {
   fbUserid: string;
   email: string;
+  name: strin
   verified: boolean;
 }

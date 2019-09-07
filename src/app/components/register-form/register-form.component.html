@@ -23,8 +23,7 @@
           A valid email is required.
       </mat-error>
     </mat-form-field>
-    <mat-divider></mat-divider>
-
+    
     <!--This area deal with password -->
     <div class="password" fxFlex fxLayout="column">
       <mat-form-field fxFlex>
@@ -37,8 +36,8 @@
         [type]="hidePassword ? 'password' : 'text'" placeholder="Confirm Password" name="confirmPassword"
         [(ngModel)]="user.confirmPassword" minlength="6" maxlength="8" #confirmPassword="ngModel">
       </mat-form-field>
-      <button fxFlex flxAlign="center" mat-icon-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <button fxFlex flxAlign="center" mat-raised-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>Exibir Senha
       </button>
     </div>
     <mat-divider></mat-divider>

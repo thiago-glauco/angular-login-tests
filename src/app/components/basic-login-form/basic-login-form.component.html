@@ -21,11 +21,12 @@
         [type]="hidePassword ? 'password' : 'text'" placeholder="Confirm Password" name="confirmPassword"
         [(ngModel)]="user.confirmPassword" minlength="6" maxlength="8" #confirmPassword="ngModel">
       </mat-form-field>
-      <button fxFlex flxAlign="center" mat-icon-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <button fxFlex flxAlign="center" mat-raised-button  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      {{hidePassword ? 'Ocultar Senha' : 'Ver Senha'}}
       </button>
     </div>
-    <mat-divider></mat-divider>
+    
     <button fxFlex flxAlign="center" mat-raised-button [disabled]="!registerForm.valid"  (click)="createUser()" [attr.aria-label]="'Registrar'">
       <mat-icon></mat-icon> Registrar
     </button>

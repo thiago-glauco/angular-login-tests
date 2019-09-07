@@ -23,16 +23,21 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 
 import {firebaseConfig} from './configs/firebase-config';
-import { BasicLoginFormComponent } from './basic-login-form/basic-login-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { DialogRecoverPassword } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+
+//components
+import { BasicLoginFormComponent } from './components/basic-login-form/basic-login-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { DialogRecoverPassword } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+
+//views
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+
 
 
 @NgModule({
@@ -57,7 +62,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatDialogModule,
     AppRoutingModule
     ],
-  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, HomeComponent, LoginComponent ],
+  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent ],
   providers: [
    
   ],

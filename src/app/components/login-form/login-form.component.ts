@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { User } from '../configs/user';
-import { Address } from '../configs/address';
-import { UserPersonalData } from '../configs/user-personal-data';
+import { User } from '../../configs/user';
+import { Address } from '../../configs/address';
+import { UserPersonalData } from '../../configs/user-personal-data';
 
 @Component({
   selector: 'app-login-form',

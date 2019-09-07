@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { User } from '../configs/user';
-import { Address } from '../configs/address';
-import { UserPersonalData } from '../configs/user-personal-data';
+import { User } from '../../configs/user';
+import { Address } from '../../configs/address';
+import { UserPersonalData } from '../../configs/user-personal-data';
 
 @Component({
-  selector: 'app-basic-login-form',
-  templateUrl: './basic-login-form.component.html',
-  styleUrls: ['./basic-login-form.component.css']
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css']
 })
-export class BasicLoginFormComponent implements OnInit {
+export class RegisterFormComponent implements OnInit {
   //firebase variables
   fbUser: firebase.User;
   
@@ -46,7 +46,7 @@ export class BasicLoginFormComponent implements OnInit {
           let errorCode = error.code;
           let errorMessage = error.message;
           if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
+            alert('Senha fraca. Tente outra senha.');
           } else {
             alert(errorMessage);
           }
@@ -59,5 +59,4 @@ export class BasicLoginFormComponent implements OnInit {
   logOut( ) {
     this.angularFireAuth.auth.signOut();
   }
-
 }

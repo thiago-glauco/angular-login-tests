@@ -62,7 +62,7 @@ import { LoginComponent } from './views/login/login.component';
     MatDialogModule,
     AppRoutingModule
   ],
-  declarations: [AppComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent],
+  declarations: [AppComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, ],
   providers: [
 
   ],

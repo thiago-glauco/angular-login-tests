@@ -5,16 +5,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 //material design
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input'; 
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatCardModule} from '@angular/material/card';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatTabsModule} from '@angular/material/tabs'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -26,7 +26,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 
-import {firebaseConfig} from './configs/firebase-config';
+import { firebaseConfig } from './configs/firebase-config';
 
 //components
 import { BasicLoginFormComponent } from './components/basic-login-form/basic-login-form.component';
@@ -41,7 +41,7 @@ import { LoginComponent } from './views/login/login.component';
 
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig, 'login-testes'),
@@ -61,14 +61,14 @@ import { LoginComponent } from './views/login/login.component';
     MatTabsModule,
     MatDialogModule,
     AppRoutingModule
-    ],
-  declarations: [ AppComponent, HelloComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent ],
+  ],
+  declarations: [AppComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent],
   providers: [
-   
+
   ],
   entryComponents: [
     DialogRecoverPassword
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ import { auth } from 'firebase/app';
 import { User } from '../../configs/user';
 import { Address } from '../../configs/address';
 import { UserPersonalData } from '../../configs/user-personal-data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -22,7 +23,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     public angularFireAuth: AngularFireAuth,
     //dialog para recuperar senha
-    public recoverPasswordDialog: MatDialog) { }
+    public recoverPasswordDialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit() {
     this.fbUser = this.angularFireAuth.auth.currentUser //Obtem o valor do objeto current user;
@@ -39,11 +41,11 @@ export class LoginFormComponent implements OnInit {
         console.dir( result );
         if(this.angularFireAuth.auth.currentUser.emailVerified){
           this.fbUser = this.angularFireAuth.auth.currentUser;
+          this.router.navigate([`/home`]);
         } else {
           //usuário não verificado
           this.angularFireAuth.auth.signOut();
           alert("Usuário não ativado. Enviamos um link para ativação da sua conta. Por favor acesse seu e-mail e faça a ativação");
-
         }
       } )
       .catch(function(error) {

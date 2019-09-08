@@ -10,11 +10,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class LoginComponent implements OnInit {
   fbUser: firebase.User;
 
-  constructor( private angularFireAuth: AngularFireAuth ) { }
+  constructor(
+    private angularFireAuth: AngularFireAuth,
+    private router: Router,
+   ) { }
 
   ngOnInit() {
     this.fbUser = this.angularFireAuth.auth.currentUser;
-    
+    if( this.fbUser ) {
+      this.router.navigate([`/home`]);
+    }
   }
 
 }

@@ -1,3 +1,12 @@
 <p>
-home works!
+  {{ (registeredUserData | async)?.name }}
+</p>
+<p>
+  {{ (registeredUserData | async)?.email }}
+</p>
+<p>
+  {{ (registeredUserData | async)?.fbUserid }}
+</p>
+<p>
+  {{ (registeredUserData | async)?.verified }}
 </p>

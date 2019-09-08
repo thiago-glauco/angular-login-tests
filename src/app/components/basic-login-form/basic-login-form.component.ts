@@ -28,16 +28,15 @@ export class BasicLoginFormComponent implements OnInit {
 
   ngOnInit() {
     //cria uma refererencia a coleção user;
-    this.usersCollection = this.afs.collection<RegisteredUser>('users');
-    console.dir(this.usersCollection);
-    
+    this.fbUser = this.angularFireAuth.auth.currentUser //Obtem o valor do objeto current user;
     console.dir(this.fbUser);
   }
 
   createUser() {
     if (!this.fbUser ) {
-      this.registeredUserDoc = this.afs.doc<RegisteredUser>('users/'+this.user.email);
-      
+      //cria uma referência para o documento do usuário, se ele existir
+      this.registeredUserDoc = this.afs.doc('users/' + this.user.email);
+      console.dir(this.registeredUserDoc);
       this.angularFireAuth.auth.createUserWithEmailAndPassword( this.user.email, this.user.password )
         .then( ( userCredential ) => {
           console.dir(userCredential);

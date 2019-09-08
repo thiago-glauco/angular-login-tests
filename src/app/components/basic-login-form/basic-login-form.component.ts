@@ -43,7 +43,7 @@ export class BasicLoginFormComponent implements OnInit {
           this.fbUser = userCredential.user;
 
           //cria uma referência ao documento do usuário no Firestore e cria o documento
-          this.registeredUserDoc = this.afs.doc('usuarios/' + this.user.email);
+          this.registeredUserDoc = this.afs.doc('usuarios/' + this.fbUser.uid);
           this.registeredUserDoc.set(
             { name: "", email: this.fbUser.email,
             verified: this.fbUser.emailVerified,

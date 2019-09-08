@@ -15,11 +15,13 @@ export class BasicLoginFormComponent implements OnInit {
 
   //firebase variables
   fbUser: firebase.User;
-  usersCollection: AngularFirestoreCollection<RegisteredUser>;
+  usersCollectionRef: AngularFirestoreCollection<RegisteredUser>;
+  registeredUserDoc: AngularFirestoreDocument<RegisteredUser>;
+
   //Form variables:
   hidePassword: boolean = true;
   user: User = new User();
-  registeredUserDoc: AngularFirestoreDocument<RegisteredUser>;
+  
 
   constructor(
     public angularFireAuth: AngularFireAuth,
@@ -35,13 +37,19 @@ export class BasicLoginFormComponent implements OnInit {
   createUser() {
     if (!this.fbUser ) {
       //cria uma referência para o documento do usuário, se ele existir
-      this.registeredUserDoc = this.afs.doc('users/' + this.user.email);
-      console.dir(this.registeredUserDoc);
       this.angularFireAuth.auth.createUserWithEmailAndPassword( this.user.email, this.user.password )
         .then( ( userCredential ) => {
           console.dir(userCredential);
           this.fbUser = userCredential.user;
+
+          //cria uma referência ao documento do usuário no Firestore e cria o documento
+          this.registeredUserDoc = this.afs.doc('usuarios/' + this.user.email);
+          this.registeredUserDoc.set(
+            { name: "", email: this.fbUser.email,
+            verified: this.fbUser.emailVerified,
+            fbUserid: this.fbUser.uid });
           
+          //envia o e-mail de confirmação para o usuário.
           this.fbUser.sendEmailVerification()
             .then( (info) => {
               console.log("email send");
@@ -63,7 +71,6 @@ export class BasicLoginFormComponent implements OnInit {
           }
           console.log(error);
         });
-        
     }
   }
 

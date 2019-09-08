@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { auth } from 'firebase/app';
 import { User } from '../../configs/user';
@@ -12,26 +12,32 @@ import { RegisteredUser } from '../../configs/registered-user';
   styleUrls: ['./basic-login-form.component.css']
 })
 export class BasicLoginFormComponent implements OnInit {
+
   //firebase variables
   fbUser: firebase.User;
-  
+  usersCollection: AngularFirestoreCollection<RegisteredUser>;
   //Form variables:
   hidePassword: boolean = true;
   user: User = new User();
+  registeredUserDoc: AngularFirestoreDocument<RegisteredUser>;
 
   constructor(
     public angularFireAuth: AngularFireAuth,
     private afs: AngularFirestore ) { 
-      //const usersCollection = afs.collection<RegisteredUser>('users');
     }
 
   ngOnInit() {
-    this.fbUser = this.angularFireAuth.auth.currentUser //Obtem o valor do objeto current user;
+    //cria uma refererencia a coleção user;
+    this.usersCollection = this.afs.collection<RegisteredUser>('users');
+    console.dir(this.usersCollection);
+    
     console.dir(this.fbUser);
   }
 
   createUser() {
     if (!this.fbUser ) {
+      this.registeredUserDoc = this.afs.doc<RegisteredUser>('users/'+this.user.email);
+      
       this.angularFireAuth.auth.createUserWithEmailAndPassword( this.user.email, this.user.password )
         .then( ( userCredential ) => {
           console.dir(userCredential);

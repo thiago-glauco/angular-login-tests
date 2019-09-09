@@ -18,6 +18,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.fbUser = this.angularFireAuth.auth.currentUser;
     if( this.fbUser ) {
+      console.log("i ping here");
+      this.router.navigate([`/home`]);
+    }
+  }
+
+  userLogged(logged: boolean ){
+    if( logged ) {
       this.router.navigate([`/home`]);
     }
   }

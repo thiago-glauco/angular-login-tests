@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
@@ -19,6 +19,7 @@ export class LoginFormComponent implements OnInit {
   //Form variables:
   hidePassword: boolean = true;
   user: User = new User();
+  @Output() userHasLoggedIn = new EventEmitter<boolean>();
 
   constructor(
     public angularFireAuth: AngularFireAuth,
@@ -41,7 +42,7 @@ export class LoginFormComponent implements OnInit {
         console.dir( result );
         if(this.angularFireAuth.auth.currentUser.emailVerified){
           this.fbUser = this.angularFireAuth.auth.currentUser;
-          this.router.navigate([`/home`]);
+          this.userHasLoggedIn.emit(true);
         } else {
           //usuário não verificado
           this.angularFireAuth.auth.signOut();

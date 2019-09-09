@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { RegisteredUser } from '../../configs/registered-user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private afs: AngularFirestore) { }
+    private afs: AngularFirestore,
+    private router: Router) { }
 
   ngOnInit() {
     this.fbUser =  this.angularFireAuth.auth.currentUser;
@@ -27,6 +29,25 @@ export class HomeComponent implements OnInit {
       this.registeredUserData = this.registeredUserDoc.valueChanges();
       console.dir(this.registeredUserData);
     }
+  }
+
+    logOut( ) {
+    //verifica se a sessão do usuário ainda é válida.
+    //se for, finaliza a sessão. Se não for, apenas atribui
+    //o valor undef para this.fbUser
+    if ( this.angularFireAuth.auth.currentUser ) {
+      this.angularFireAuth.auth.signOut()
+      .then( ( ) => {
+        this.fbUser = this.angularFireAuth.auth.currentUser;
+      })
+      .catch( (error) => {
+        console.dir(error);
+        alert("Não foi possível encerrar a sessão.")
+      })
+    } else {
+      this.fbUser = null;
+    }
+    this.router.navigate([`/login`]);
   }
 
 }

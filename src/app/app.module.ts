@@ -30,7 +30,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { firebaseConfig } from './configs/firebase-config';
 
 //components
-import { BasicLoginFormComponent } from './components/basic-login-form/basic-login-form.component';
+import { BasicRegisterFormComponent } from './components/basic-register-form/basic-register-form.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { DialogRecoverPassword } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
@@ -64,7 +64,7 @@ import { LoginComponent } from './views/login/login.component';
     AppRoutingModule,
     AngularFirestoreModule
   ],
-  declarations: [AppComponent, BasicLoginFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent],
+  declarations: [AppComponent, BasicRegisterFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent],
   providers: [
 
   ],

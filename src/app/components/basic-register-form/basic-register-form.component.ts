@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -7,13 +7,14 @@ import { User } from '../../configs/user';
 import { RegisteredUser } from '../../configs/registered-user';
 
 @Component({
-  selector: 'app-basic-login-form',
-  templateUrl: './basic-login-form.component.html',
-  styleUrls: ['./basic-login-form.component.css']
+  selector: 'app-basic-register-form',
+  templateUrl: './basic-register-form.component.html',
+  styleUrls: ['./basic-register-form.component.css']
 })
-export class BasicLoginFormComponent implements OnInit {
+export class BasicRegisterFormComponent implements OnInit {
 
   //firebase variables
+  @Output() registered = new EventEmitter<boolean>();
   fbUser: firebase.User;
   usersCollectionRef: AngularFirestoreCollection<RegisteredUser>;
   registeredUserDoc: AngularFirestoreDocument<RegisteredUser>;
@@ -59,6 +60,7 @@ export class BasicLoginFormComponent implements OnInit {
             .catch((error) => {
               console.dir(error);
             });
+          this.registered.emit(true);
         } )
         .catch(function(error) {
           // Handle Errors here.

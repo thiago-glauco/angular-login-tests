@@ -21,7 +21,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -38,6 +38,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 //views
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
+import { StorageService } from './services/storage.service';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 
@@ -46,6 +48,7 @@ import { LoginComponent } from './views/login/login.component';
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig, 'login-testes'),
+    AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -62,11 +65,10 @@ import { LoginComponent } from './views/login/login.component';
     MatTabsModule,
     MatDialogModule,
     AppRoutingModule,
-    AngularFirestoreModule
   ],
-  declarations: [AppComponent, BasicRegisterFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent],
+  declarations: [AppComponent, BasicRegisterFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent, FileUploadComponent],
   providers: [
-
+  StorageService
   ],
   entryComponents: [
     DialogRecoverPassword

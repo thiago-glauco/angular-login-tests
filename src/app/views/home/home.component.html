@@ -10,4 +10,5 @@
 <p>
   {{ (registeredUserData | async)?.verified }}
 </p>
+<app-file-upload [user]="fbUser"></app-file-upload>
 <button mat-raised-button (click)="logOut()">Sair</button>

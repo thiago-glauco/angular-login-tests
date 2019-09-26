@@ -16,7 +16,7 @@ export class FileUploadComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.getDownloadUrl(this.user.uid + '/' + "perfil.jpg");
   }
 
   uploadFile(event) {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-file-upload',
@@ -10,6 +11,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class FileUploadComponent implements OnInit {
   @Input( ) user;
   profileImg: string;
+
+  //cropped image variables:
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   constructor(
     private storageService: StorageService,
     private angularFireAuth: AngularFireAuth,
@@ -33,6 +38,24 @@ export class FileUploadComponent implements OnInit {
     this.storageService.downloadUrl(file)
     .then( (result) => this.profileImg = result )
     .catch( (err) => console.log("erro ao baixar imagem"));
+  }
+
+  //cropped image methods
+    
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+      // show cropper
+  }
+  cropperReady() {
+      // cropper ready
+  }
+  loadImageFailed() {
+      // show message
   }
 
 }

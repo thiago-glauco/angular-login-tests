@@ -16,6 +16,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 
+//image cropper
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 //firebase modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -64,6 +67,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     MatMenuModule,
     MatTabsModule,
     MatDialogModule,
+    ImageCropperModule,
     AppRoutingModule,
   ],
   declarations: [AppComponent, BasicRegisterFormComponent, LoginFormComponent, RegisterFormComponent, DialogRecoverPassword, LoginComponent, HomeComponent, FileUploadComponent],

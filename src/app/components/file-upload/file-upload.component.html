@@ -1,6 +1,19 @@
 <p>
 <img [src]="profileImg" *ngIf="profileImg" alt="profile image" width="80px">
 </p>
+<image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+<img [src]="croppedImage" />
 <p>
-<input type="file" (change)="uploadFile($event)">
+<input type="file" (change)="fileChangeEvent($event)">
 </p>

@@ -15,5 +15,7 @@
 
 <img [src]="croppedImage" />
 <p>
-<input type="file" (change)="fileChangeEvent($event)">
+<label for="fileUploader">Selecionar Arquivo (png, jpg)</label>
+<input type="file" name="fileUploader" id="fileUploader" accept=".png, .jpg, .jpeg" (change)="fileChangeEvent($event)">
+
 </p>

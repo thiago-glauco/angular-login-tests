@@ -21,17 +21,20 @@ export class FileUploadComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDownloadUrl(this.user.uid + '/' + "perfil.jpg");
+    this.getDownloadUrl(this.user.uid + '/' + "perfil.png");
   }
 
-  uploadFile(event) {
-    const file = event.target.files[0];
-    const uploadTask = this.storageService.uploadFile(file, this.user.uid + '/' + "perfil.jpg" );
+  uploadFile( ) {
+    //const file = event.target.files[0];
+    console.log("uploading file");
+    const uploadTask = this.storageService.uploadString(this.croppedImage.split(',')[1], 'usuarios/'+this.user.uid + '/' + "perfil.png" );
     uploadTask.then( result => {
       console.dir(result);
-      this.getDownloadUrl(this.user.uid + '/' + "perfil.jpg");
+      this.getDownloadUrl(this.user.uid + '/' + "perfil.png");
     })
-      .catch(error => console.dir(error));
+      .catch(error => {
+        console.log("erro ao realizar upload");
+        console.dir(error)});
   }
 
   getDownloadUrl(file) {
@@ -43,10 +46,13 @@ export class FileUploadComponent implements OnInit {
   //cropped image methods
     
   fileChangeEvent(event: any): void {
-      this.imageChangedEvent = event;
+    this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
-      this.croppedImage = event.base64;
+    this.croppedImage = event.base64;
+    //this.croppedImage = event.file;
+    console.log("image data: ");
+    console.dir(this.croppedImage);
   }
   imageLoaded() {
       // show cropper

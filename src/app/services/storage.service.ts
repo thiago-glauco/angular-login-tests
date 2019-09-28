@@ -17,6 +17,11 @@ export class StorageService {
     return userFolderRef.put(file);
   }
 
+  uploadString( file, userDestiny): AngularFireUploadTask {
+    let fileRef: AngularFireStorageReference = this.storage.ref(userDestiny);
+    return fileRef.putString(file, 'base64', {contentType:'image/png'} );
+  }
+
   downloadUrl( fullPath ) {
     let fileRef: AngularFireStorageReference = this.storage.ref( 'usuarios/' + fullPath );
     return fileRef.getDownloadURL( ).toPromise();

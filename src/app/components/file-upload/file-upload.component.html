@@ -17,7 +17,7 @@
 <img [src]="croppedImage" />
 <p>
   <label for="fileUploader">Selecionar Arquivo (png, jpg)</label>
-  <input type="file" name="fileUploader" id="fileUploader" accept=".png" (change)="fileChangeEvent($event)">
+  <input type="file" name="fileUploader" id="fileUploader" accept=".png,.jpg,.jpeg" (change)="fileChangeEvent($event)">
 </p>
 <p>
 <button mat-raised-button (click)="uploadFile()">upload</button>
